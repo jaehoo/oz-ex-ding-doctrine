@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <!-- Manage Transactions -->
+
+    <bean id="transactionManager" class="Aspect\DoctrineTransactionManager"/>
+
+    <!--<aspect-->
+            <!--id="TransactionalAspect"-->
+            <!--expression="Service$"-->
+            <!--ref="myAspectBean"-->
+            <!--type="method">-->
+        <!--<pointcut expression="doBusiness[12]" method="methodInterceptor"/>-->
+    <!--</aspect>-->
+
+            <!---->
+            <!---->
+  <!--<bean id="test" class="Model\Persistence\Person" scope="singleton">-->
+    <!--<property name="name"><value>Alberto =D</value></property>-->
+  <!--</bean>-->
+</beans>

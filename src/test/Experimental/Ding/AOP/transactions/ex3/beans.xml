@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <aspect
+            id="anAspect"
+            expression="Service2$"
+            ref="txAspect"
+            type="method">
+        <pointcut expression="doBusiness*" method="manageTransaction"/>
+    </aspect>
+
+    <!-- Aspect -->
+
+    <bean id="txAspect" class="Experimental\DI\AOP\transactions\TransactionalAspect">
+        <property name="entityManager">
+            <ref bean="entityManager"/>
+        </property>
+    </bean>
+
+    <!-- Service -->
+
+    <bean id="abstractsService"
+          abstract="true"
+          class="Experimental\DI\AOP\transactions\AbstractService"
+          scope="singleton">
+
+        <aspect ref="txAspect" type="method">
+            <pointcut expression="doBusiness*" method="manageTransaction"/>
+        </aspect>
+
+        <property name="entityManager">
+            <ref bean="entityManager"/>
+        </property>
+    </bean>
+
+    <bean id="myService" parent="abstractsService" class="Test\Transactional\TransactionalService3" />
+
+</beans>
+

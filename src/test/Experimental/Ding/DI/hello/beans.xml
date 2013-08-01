@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean id="myBeanName" class="MyBean" scope="singleton">
+        <property name="someProperty"><value>${user.name}</value></property>
+    </bean>
+
+    <bean id="testBean" class="Experimental\DI\TestBean" scope="singleton">
+        <property name="name"><value>Jaehoo :D</value></property>
+    </bean>
+
+</beans>

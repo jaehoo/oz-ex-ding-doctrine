@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+
+
+    <bean id="testArray" class="TestArray">
+
+        <property name="array">
+            <array id="paths">
+                <entry key="K1">
+                    <value>SRC_DIR ${doctrine.entity.path}</value>
+                </entry>
+            </array>
+        </property>
+
+    </bean>
+
+
+</beans>
+

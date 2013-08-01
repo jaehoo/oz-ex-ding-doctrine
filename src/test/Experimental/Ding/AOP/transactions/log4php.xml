@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log4php:configuration xmlns:log4php="http://logging.apache.org/log4php/">
+
+    <appender name="STDOUT" class="LoggerAppenderConsole" >
+        <layout class="LoggerLayoutPattern">
+            <!-- <param name="conversionPattern" value="[%d{h:i:s}] %-5p %F:%L - %m%n" />-->
+            <param name="conversionPattern" value="%d{h:i:s} | %-5p | %logger - %message %newline" />
+        </layout>
+    </appender>
+
+    <root>
+        <level value="debug" />
+        <appender_ref ref="STDOUT" />
+        <!--<appender_ref ref="FILE" />-->
+    </root>
+
+</log4php:configuration>

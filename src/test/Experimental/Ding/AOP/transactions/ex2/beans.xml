@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <aspect
+            id="anAspect"
+            expression="Service2$"
+            ref="txAspect"
+            type="method">
+        <!--<pointcut expression="doBusiness*" method="manageTransaction"/>-->
+        <pointcut expression="doBusinessJob" method="manageTransaction"/>
+        <pointcut expression="doBusinessProcess" method="manageTransaction"/>
+
+    </aspect>
+
+    <!-- Aspect -->
+
+    <bean id="txAspect" class="Experimental\DI\AOP\transactions\TransactionalAspect">
+        <property name="entityManager">
+            <ref bean="entityManager"/>
+        </property>
+    </bean>
+
+    <!-- Service -->
+
+    <bean id="myService"
+          class="Test\Transactional\TransactionalService2">
+        <property name="entityManager">
+            <ref bean="entityManager"/>
+        </property>
+    </bean>
+
+</beans>
+

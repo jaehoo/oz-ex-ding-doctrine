@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+
+    <!-- The PropertiesHolder bean is what makes it possible for the
+  container to read properties from a standard php.ini file, so we
+  can use them in other bean configurations.  -->
+    <bean id="PropertiesHolder" class="Ding\Helpers\Properties\PropertiesHelper">
+        <property name="locations">
+            <array>
+                <entry><value>
+                    ${config.dir}/config.properties
+                </value></entry>
+            </array>
+        </property>
+    </bean>
+
+
+    <!-- Doctrine Config -->
+
+    <bean id="sqlLogger" class="Doctrine\DBAL\Logging\EchoSQLLogger"/>
+
+    <bean id="doctrine-metadata-driver"
+          class="Doctrine\ORM\Mapping\Driver\AnnotationDriver"
+          factory-method="create">
+
+        <constructor-arg>
+            <array>
+                <entry><value>${doctrine.entity.path}</value></entry>
+            </array>
+        </constructor-arg>
+
+    </bean>
+
+    <bean id="doctrine-config"
+          class="Doctrine\ORM\Tools\Setup"
+          factory-method="createAnnotationMetadataConfiguration">
+        <constructor-arg>
+            <array>
+                <entry><value>${doctrine.entity.path}</value></entry>
+            </array>
+        </constructor-arg>
+        <constructor-arg><value>${doctrine.proxy.generate}</value></constructor-arg>
+
+        <!-- SQL Logger -->
+
+        <property name="sqlLogger">
+            <ref bean="sqlLogger"/>
+        </property>
+
+        <property name="metadataDriverImpl">
+            <ref bean="doctrine-metadata-driver"/>
+        </property>
+
+        <!-- Enable Only with configure Cache -->
+
+        <!--<property name="metaDataCacheImpl">-->
+            <!--<ref bean="doctrine-metadata-cache"/>-->
+        <!--</property>-->
+
+
+        <!-- Configure this properties for production environments-->
+
+        <!--<property name="proxyDir"><value>${doctrine.proxy.dir}</value></property>
+        <property name="proxyNameSpace"><value>${doctrine.proxy.namespace}</value></property>
+        <property name="autoGenerateProxyClasses"><value>${doctrine.proxy.generate}</value></property>-->
+
+    </bean>
+
+
+    <!-- Enable Only with configure Cache -->
+    <!--<bean id="doctrine-metadata-cache"-->
+    <!--class="${doctrine.cache.query}"/>-->
+
+    <!--<bean id="doctrine-query-cache"-->
+    <!--class="${doctrine.cache.metadata}"/>-->
+
+    <bean id="entityManager"
+          class="Doctrine\ORM\EntityManager"
+          factory-method="create">
+        <constructor-arg><value>${doctrine.db}</value></constructor-arg>
+        <constructor-arg><ref bean="doctrine-config" /></constructor-arg>
+        <!-- <constructor-arg><ref bean="eventManager" /></constructor-arg>-->
+    </bean>
+
+    <!--<bean id="eventManager" class="Doctrine\Common\EventManager"/>-->
+
+
+</beans>
+
