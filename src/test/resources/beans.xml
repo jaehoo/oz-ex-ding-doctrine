@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean id="test" class="Model\Persistence\Person" scope="singleton">
+        <property name="name"><value>Jaehoo :D</value></property>
+    </bean>
+
+</beans>

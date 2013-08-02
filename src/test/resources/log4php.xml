@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log4php:configuration xmlns:log4php="http://logging.apache.org/log4php/">
+
+    <appender name="STDOUT" class="LoggerAppenderConsole" >
+        <layout class="LoggerLayoutPattern">
+            <!-- <param name="conversionPattern" value="[%d{h:i:s}] %-5p %F:%L - %m%n" />-->
+            <param name="conversionPattern" value="%d{h:i:s} | %-5p | %logger - %message %newline" />
+        </layout>
+    </appender>
+
+    <!--<appender name="FILE" class="LoggerAppenderDailyFile">
+        <layout class="LoggerLayoutPattern">
+            <param name="conversionPattern" value="%d{h:i:s} | %-5p | %logger - %message %newline" />
+        </layout>
+        <param name="datePattern" value="Y-m-d" />
+        <param name="file" value="logs/%s.log" />
+        <param name="append" value="true" />
+
+    </appender>-->
+
+
+    <!-- Create specific logs-->
+    <!-- <logger name="com.oz.*">
+        <appender_ref ref="STDOUT" />
+    </logger>-->
+
+    <root>
+        <level value="info" />
+        <appender_ref ref="STDOUT" />
+        <!--<appender_ref ref="FILE" />-->
+    </root>
+
+</log4php:configuration>

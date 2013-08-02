@@ -1,25 +1,37 @@
 <?php
 
-require_once "../../../../../../include.php";
+/**
+ * Bootstrap configuration Ding and Doctrine
+ * Created by Alberto Sánchez.
+ * Date: 8/07/13
+ * Time: 12:36 PM
+ * Contact to: <a href="mailto:jaehoo@gmail.com">jaehoo@gmail.com</a>
+ * Twitter: @Jaehoox
+ */
+
+require_once __DIR__.DIRECTORY_SEPARATOR.'../../include.php';
 
 use \Ding\Container\Impl\ContainerImpl;
+
+Logger::configure(SRC_DIR.'resources/log4php.xml');
+$log = Logger::getLogger('DingContainer');
+$log->info("Start Ding Container Configuration...");
 
 // Here you configure the container, its subcomponents, drivers, etc.
 $properties = array(
     'ding' => array(
-        'log4php.properties' => 'log4php.xml',
+        'log4php.properties' => SRC_DIR."resources/log4php.xml",
         'factory' => array(
             'bdef' => array( // Both of these drivers are optional. They are both included just for the thrill of it.
                 'xml' => array(
-                    'filename' => 'beans.xml'
-                    //'directories' => array($confDir . '/support'),
+                    'filename' =>  array('datasource.xml','beans.xml','aspects.xml'),
+                    'directories' => array(SRC_DIR.'php',SRC_DIR.'resources')
                 ),
-                'annotation' => array('scanDir' => array(realpath(__DIR__)))
+                //'annotation' => array('scanDir' => array(SRC_DIR.'php/')),
             ),
             // These properties will be used by the container when instantiating the beans, see beans.xml
             'properties' => array(
-                'user.name' => 'nobody',
-                'user.namex' => 'nobody',
+                'config.dir' => SRC_DIR.'resources/'
             )
         )
 //    ,
@@ -33,8 +45,9 @@ $properties = array(
     )
 );
 
-
 $container = ContainerImpl::getInstance($properties);
-$proxyBean=  $container->getBean('testProxyBean');
 
-$proxyBean->execute();
+//Getting Doctrine EntityManager
+$entityManager = $container->getBean('entityManager');
+
+$log->info("End Ding Container Configuration...");

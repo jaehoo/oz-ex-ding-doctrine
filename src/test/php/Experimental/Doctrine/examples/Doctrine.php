@@ -7,7 +7,8 @@
  * To change this template use File | Settings | File Templates.
  */
 
-require_once "../../../bootstrap.php";
+require_once "../bootstrap.php";
+
 
 
 spl_autoload_register(array('Doctrine', 'autoload'));

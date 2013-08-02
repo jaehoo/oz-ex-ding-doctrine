@@ -1,6 +1,6 @@
 <?php
 
-require_once 'bootstrap.php';
+require_once 'src/main/php/bootstrap.php';
 
 /**
  * Configuration to use Doctrine Command Tools

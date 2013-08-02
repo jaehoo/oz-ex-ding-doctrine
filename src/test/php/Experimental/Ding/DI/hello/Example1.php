@@ -29,16 +29,16 @@ require_once "../../../../../../include.php";
  * limitations under the License.
  *
  */
-ini_set(
-    'include_path',
-    implode(
-        PATH_SEPARATOR,
-        array(
-            implode(DIRECTORY_SEPARATOR, array('..', '..', '..', 'src', 'test','Experimental','DI')),
-            ini_get('include_path'),
-        )
-    )
-);
+//ini_set(
+//    'include_path',
+//    implode(
+//        PATH_SEPARATOR,
+//        array(
+//            implode(DIRECTORY_SEPARATOR, array('..', '..', '..', 'src', 'test','Experimental','DI')),
+//            ini_get('include_path'),
+//        )
+//    )
+//);
 
 /**
  * This is our bean.

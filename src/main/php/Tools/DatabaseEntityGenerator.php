@@ -1,7 +1,7 @@
 <?php
 
 // DatabaseEntityGenerator.php
-require_once '../../../../bootstrap.php';
+require_once '../../../main/php/bootstrap.php';
 
 
 #Output directory

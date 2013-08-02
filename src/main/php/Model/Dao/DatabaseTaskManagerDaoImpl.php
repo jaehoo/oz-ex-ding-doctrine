@@ -28,6 +28,7 @@ class DatabaseTaskManagerDaoImpl extends AbstractDao implements TaskManagerDao {
 
     /**
      * @param \Task $task
+     * @return mixed|void
      */
     public function updateTask(\Task $task)
     {

@@ -7,9 +7,10 @@
  * Twitter: @Jaehoox
  */
 
-require_once "../../bootstrap.php";
+require_once __DIR__.'/../../../include.php';
 
-Logger::configure(SRC_DIR.'resources/log4php.xml');
+
+Logger::configure('../../resources/log4php.xml');
 $log = Logger::getLogger("main");
 $log->debug("PATH: ".ini_get('include_path'));
 

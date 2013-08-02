@@ -1,7 +1,7 @@
 
 <?php
 
-require_once "../../../bootstrap.php";
+require_once "../../../../include.php";
 
 /*$signals = array(
     SIGQUIT, SIGHUP, SIGINT, SIGCHLD, SIGTERM, SIGUSR1, SIGUSR2

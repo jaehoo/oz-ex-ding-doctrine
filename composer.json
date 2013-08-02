@@ -9,7 +9,7 @@
         "phpunit/phpunit": "3.7.*"
     }
     ,"autoload": {
-        "psr-0": {"": "src/main/php"}
+        "psr-0": {"0": "src/main/php", "1": "src/test/php"}
     }
     ,"repositories": [
         {

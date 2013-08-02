@@ -6,7 +6,6 @@
  * Contact to: <a href="mailto:jaehoo@gmail.com">My mail</a>
  * Twitter: @Jaehoox
  */
-
 class HelloTest extends PHPUnit_Framework_TestCase{
 
     /**
@@ -19,8 +18,7 @@ class HelloTest extends PHPUnit_Framework_TestCase{
 
     public function test()
     {
-        
+        echo "TESSSSSSSSSSSSSSSSSST";
     }
-
 
 }
